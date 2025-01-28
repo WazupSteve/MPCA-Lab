@@ -5,7 +5,7 @@ B: .word 3
 .global _start
 _start:
     MOV r0, #10          
-    MOV r1, #11         
+    MOV r1, #3         
     MOV r3, #0          
 
 loop:
