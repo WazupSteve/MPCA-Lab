@@ -1,20 +1,16 @@
-.data
-A: .word 10 
-B: .word 3 
+.DATA
+ A: .word 10
+ B: .word 11
 
-.global _start
-_start:
-    MOV r0, #10          
-    MOV r1, #3         
-    MOV r3, #0          
+.TEXT
+LDR R0,=A;
+LDR R1,=B;
+LDR R2,[R0];
+LDR R3,[R1];
 
-loop:
-    SUBS r2, r0, r1      
-    BLT exit             
-    MOV r0, r2           
-    B loop               
-exit:
-    CMP r2, r1           
-    ADDLT r3, r3, r1     
-    BX lr             
-
+L1: CMP R2,R3;
+	BLT L2;
+	SUB R2,R2,R3;
+	B L1;
+	
+L2: SWI 0x011;
