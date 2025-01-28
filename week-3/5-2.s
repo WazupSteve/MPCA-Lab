@@ -1,6 +1,6 @@
 .data
     A: .word 1, 2, 3, 4, 5
-    B: .word 5, 4, 3, 2, 1
+    B: .word 1, 2, 3, 4, 5
     C: .word 0, 0, 0, 0, 0
 
 .text
@@ -13,8 +13,7 @@
 L1:
     LDR R3, [R0], #4     @ Load value from array A into R3 and increment R0 by 4
     LDR R4, [R1], #4     @ Load value from array B into R4 and increment R1 by 4
-    MUL R5, R3, R4       @ Multiply R3 and R4, store result in R5
-    ADD R6, R6, R5       @ Accumulate the result in R6
+    MLA R6, R3, R4, R6   @ Multiply R3 and R4, add to R6, and store result in R6
     SUBS R10, R10, #1    @ Decrement loop counter
     BNE L1               @ If counter is not zero, branch to L1
 
